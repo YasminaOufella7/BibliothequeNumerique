@@ -1,0 +1,22 @@
+===== RAPPORT DE LA BIBLIOTHÈQUE =====
+
+23 - Jas ofl My Mind - Livre
+22 -  For You - Livre
+23 -  Adventure - Livre
+23 - Dreams - Livre
+19 - Story - Livre
+28 - Magazine - Magazine
+19 - News - Magazine
+30 - Life - Magazine
+17 - Tech - Magazine
+4 - World - Magazine
+22 - Programming - Livre numérique
+22 - Coding - Livre numérique
+25 - AI - Livre numérique
+23 - Java With Jas - Livre numérique
+
+===== STATISTIQUES =====
+Nombre de livres : 5
+Nombre de magazines : 5
+Nombre de livres numériques : 4
+Nombre total d'emprunts : 0

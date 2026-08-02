@@ -1,0 +1,85 @@
+# 📚 Bibliothèque Numérique - Gestion des Emprunts
+
+## Description
+
+Ce projet a été réalisé en Java dans le cadre du cours de programmation orientée objet.
+
+L'application permet de gérer une bibliothèque numérique en cataloguant différents types de documents, de gérer les emprunts et les retours, de calculer des statistiques et de générer un rapport.
+
+---
+
+## Fonctionnalités
+
+- Chargement des documents depuis un fichier CSV
+- Gestion des emprunts
+- Gestion des retours
+- Vérification de la disponibilité des documents
+- Gestion des exceptions personnalisées
+- Calcul des statistiques
+- Génération d'un rapport TXT
+- Interface graphique réalisée avec Java Swing
+
+---
+
+## Technologies utilisées
+
+- Java
+- IntelliJ IDEA
+- Java Swing
+- CSV
+- Git & GitHub
+
+---
+
+## Concepts utilisés
+
+- Héritage
+- Classe abstraite
+- Interface
+- ArrayList
+- Exceptions personnalisées
+- Lecture et écriture de fichiers CSV
+- Principes SOLID (SRP et OCP)
+
+---
+
+## Structure du projet
+
+```
+src
+│
+├── exception
+├── interfaces
+├── model
+├── service
+├── util
+├── view
+└── Main.java
+
+data
+└── documents.csv
+
+rapport.txt
+```
+
+---
+
+## Exécution
+
+1. Ouvrir le projet dans IntelliJ IDEA.
+2. Exécuter la classe `Main`.
+3. L'application charge automatiquement le fichier `documents.csv`.
+4. Utiliser l'interface graphique pour :
+   - emprunter un document ;
+   - retourner un document ;
+   - consulter les statistiques ;
+   - générer le rapport.
+
+---
+
+## Auteur
+
+**Yasmina Oufella**
+**Fereil   Faci**
+
+Projet réalisé dans le cadre du cours de programmation orientée objet.
