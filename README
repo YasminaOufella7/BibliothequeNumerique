@@ -1,23 +1,22 @@
-# 📚 Bibliothèque Numérique - Gestion des Emprunts
+# 📚 Bibliothèque Numérique – Gestion des Emprunts
 
 ## Description
 
-Ce projet a été réalisé en Java dans le cadre du cours de programmation orientée objet.
+Ce projet est une application Java permettant de gérer une bibliothèque numérique.
 
-L'application permet de gérer une bibliothèque numérique en cataloguant différents types de documents, de gérer les emprunts et les retours, de calculer des statistiques et de générer un rapport.
+L'application permet de cataloguer différents types de documents (livres, magazines et journaux), de gérer les emprunts et les retours, de calculer des statistiques et de générer un rapport.
 
 ---
 
 ## Fonctionnalités
 
-- Chargement des documents depuis un fichier CSV
-- Gestion des emprunts
-- Gestion des retours
+- Gestion des livres, magazines et journaux
+- Lecture des données depuis un fichier CSV
+- Emprunt et retour des documents
 - Vérification de la disponibilité des documents
 - Gestion des exceptions personnalisées
 - Calcul des statistiques
-- Génération d'un rapport TXT
-- Interface graphique réalisée avec Java Swing
+- Génération d'un rapport texte
 
 ---
 
@@ -25,41 +24,25 @@ L'application permet de gérer une bibliothèque numérique en cataloguant diff�
 
 - Java
 - IntelliJ IDEA
-- Java Swing
-- CSV
-- Git & GitHub
-
----
-
-## Concepts utilisés
-
-- Héritage
-- Classe abstraite
-- Interface
-- ArrayList
-- Exceptions personnalisées
-- Lecture et écriture de fichiers CSV
-- Principes SOLID (SRP et OCP)
+- Git
+- GitHub
 
 ---
 
 ## Structure du projet
 
 ```
-src
-│
-├── exception
-├── interfaces
-├── model
-├── service
-├── util
-├── view
+src/
+├── exception/
+├── interface/
+├── model/
+├── service/
+├── util/
 └── Main.java
 
-data
-└── documents.csv
-
+documents.csv
 rapport.txt
+README.md
 ```
 
 ---
@@ -68,8 +51,8 @@ rapport.txt
 
 1. Ouvrir le projet dans IntelliJ IDEA.
 2. Exécuter la classe `Main`.
-3. L'application charge automatiquement le fichier `documents.csv`.
-4. Utiliser l'interface graphique pour :
+3. Les données sont chargées automatiquement depuis `documents.csv`.
+4. Utiliser l'application pour :
    - emprunter un document ;
    - retourner un document ;
    - consulter les statistiques ;
@@ -78,8 +61,10 @@ rapport.txt
 ---
 
 ## Auteur
+Yasmina Oufella
+Feriel Faci
 
-**Yasmina Oufella**
-**Fereil   Faci**
 
-Projet réalisé dans le cadre du cours de programmation orientée objet.
+
+- Yasmina Oufella
+- Fereil Faci
