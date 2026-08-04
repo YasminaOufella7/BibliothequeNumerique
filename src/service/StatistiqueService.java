@@ -99,4 +99,55 @@ public class StatistiqueService {
                         + " %"
         );
     }
+    public int nombreTotalDocuments() {
+        return documents.size();
+    }
+
+    public int nombreDocumentsDisponibles() {
+
+        int nombre = 0;
+
+        for (Document document : documents) {
+
+            if (document.isDisponible()) {
+                nombre++;
+            }
+        }
+
+        return nombre;
+    }
+
+    public int nombreDocumentsEmpruntes() {
+
+        int nombre = 0;
+
+        for (Document document : documents) {
+
+            if (!document.isDisponible()) {
+                nombre++;
+            }
+        }
+
+        return nombre;
+    }
+
+    public Document documentLePlusEmprunte() {
+
+        if (documents.isEmpty()) {
+            return null;
+        }
+
+        Document plusEmprunte = documents.get(0);
+
+        for (Document document : documents) {
+
+            if (document.getNombreEmprunts()
+                    > plusEmprunte.getNombreEmprunts()) {
+
+                plusEmprunte = document;
+            }
+        }
+
+        return plusEmprunte;
+    }
 }

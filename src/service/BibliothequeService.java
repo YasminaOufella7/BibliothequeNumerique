@@ -76,14 +76,14 @@ public class BibliothequeService {
     }
 
     /*
-     * Même méthode avec le nom utilisé dans certains Main.
+     * Recherche un document par identifiant.
      */
     public Document rechercherDocumentParId(String id) {
         return chercherDocument(id);
     }
 
     /*
-     * Recherche des documents par leur titre.
+     * Recherche plusieurs documents par leur titre.
      */
     public ArrayList<Document> rechercherDocumentsParTitre(
             String titre
@@ -113,9 +113,42 @@ public class BibliothequeService {
     }
 
     /*
+     * Recherche un document par son identifiant
+     * ou par son titre.
+     */
+    public Document rechercherDocument(
+            String recherche
+    ) {
+
+        if (recherche == null
+                || recherche.trim().isEmpty()) {
+
+            return null;
+        }
+
+        String texte =
+                recherche.trim().toLowerCase();
+
+        for (Document document : documents) {
+
+            if (document.getId()
+                    .equalsIgnoreCase(recherche.trim())
+                    || document.getTitre()
+                    .toLowerCase()
+                    .contains(texte)) {
+
+                return document;
+            }
+        }
+
+        return null;
+    }
+
+    /*
      * Emprunte un document.
      */
-    public void emprunterDocument(String id) {
+    public void emprunterDocument(String id)
+            throws DocumentIndisponibleException {
 
         Document document =
                 chercherDocument(id);
@@ -130,23 +163,13 @@ public class BibliothequeService {
             return;
         }
 
-        try {
+        document.emprunter();
 
-            document.emprunter();
-
-            System.out.println(
-                    "Le document \""
-                            + document.getTitre()
-                            + "\" a été emprunté avec succès."
-            );
-
-        } catch (DocumentIndisponibleException e) {
-
-            System.out.println(
-                    "Erreur : "
-                            + e.getMessage()
-            );
-        }
+        System.out.println(
+                "Le document \""
+                        + document.getTitre()
+                        + "\" a été emprunté avec succès."
+        );
     }
 
     /*

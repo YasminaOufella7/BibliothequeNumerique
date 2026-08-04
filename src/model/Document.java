@@ -70,5 +70,8 @@ public abstract class Document implements Empruntable {
     }
 
     public abstract String getCategorie();
+    public boolean isDisponible() {
+        return disponible;
+    }
 
 }
