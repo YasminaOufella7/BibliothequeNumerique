@@ -12,7 +12,7 @@
 4 - World - Magazine
 22 - Programming - Livre numérique
 22 - Coding - Livre numérique
-25 - AI - Livre numérique
+24 - AI - Livre numérique
 23 - Java With Jas - Livre numérique
 
 ===== STATISTIQUES =====
