@@ -1,56 +1,175 @@
 import model.Document;
 import service.BibliothequeService;
-import service.StatistiqueService;
 import util.CSVReader;
-import util.RapportWriter;
+
 import java.util.ArrayList;
-import view.BibliothequeFrame;
+import java.util.Scanner;
 
 public class Main {
 
+    private static final String FICHIER_DOCUMENTS =
+            "data/documents.csv";
+
     public static void main(String[] args) {
 
-        // Charger les documents
+        Scanner scanner = new Scanner(System.in);
+
+        // Lecture du fichier CSV
         CSVReader lecteur = new CSVReader();
 
         ArrayList<Document> documents =
-                lecteur.chargerDocuments("data/documents.csv");
-        BibliothequeFrame fenetre =
-                new BibliothequeFrame(documents);
+                lecteur.chargerDocuments(FICHIER_DOCUMENTS);
 
-        fenetre.setVisible(true);
-
-        // Afficher le nombre de documents
-        System.out.println("Nombre de documents chargés : " + documents.size());
-
-        // Afficher les documents
-        for (Document document : documents) {
-
-            System.out.println(
-                    document.getId()
-                            + " - "
-                            + document.getTitre()
-                            + " - "
-                            + document.getCategorie()
-            );
-        }
-
-        // Gestion des emprunts
+        // Création du service de bibliothèque
         BibliothequeService bibliotheque =
                 new BibliothequeService(documents);
 
-       // bibliotheque.emprunterDocument("L001");
-        //bibliotheque.emprunterDocument("L001");
-       // bibliotheque.retournerDocument("L001");
-        //bibliotheque.emprunterDocument("L001");
+        System.out.println(
+                documents.size()
+                        + " document(s) valide(s) chargé(s)."
+        );
 
-        // Afficher les statistiques
-        StatistiqueService statistiques =
-                new StatistiqueService(documents);
+        int choix;
 
-        statistiques.afficherStatistiques();
-        RapportWriter writer = new RapportWriter();
+        do {
 
-        writer.genererRapport(documents);
+            afficherMenu();
+
+            choix = lireEntier(
+                    scanner,
+                    "Votre choix : "
+            );
+
+            switch (choix) {
+
+                case 1:
+                    bibliotheque.afficherDocuments();
+                    break;
+
+                case 2:
+                    emprunterDocument(
+                            scanner,
+                            bibliotheque
+                    );
+                    break;
+
+                case 3:
+                    retournerDocument(
+                            scanner,
+                            bibliotheque
+                    );
+                    break;
+
+                case 0:
+                    System.out.println(
+                            "Fin du programme."
+                    );
+                    break;
+
+                default:
+                    System.out.println(
+                            "Choix invalide."
+                    );
+            }
+
+        } while (choix != 0);
+
+        scanner.close();
+    }
+
+    private static void afficherMenu() {
+
+        System.out.println(
+                "\n===== BIBLIOTHÈQUE NUMÉRIQUE ====="
+        );
+
+        System.out.println(
+                "1. Afficher tous les documents"
+        );
+
+        System.out.println(
+                "2. Emprunter un document"
+        );
+
+        System.out.println(
+                "3. Retourner un document"
+        );
+
+        System.out.println(
+                "0. Quitter"
+        );
+    }
+
+    private static int lireEntier(
+            Scanner scanner,
+            String message
+    ) {
+
+        while (true) {
+
+            System.out.print(message);
+
+            String saisie =
+                    scanner.nextLine().trim();
+
+            try {
+
+                return Integer.parseInt(saisie);
+
+            } catch (NumberFormatException e) {
+
+                System.out.println(
+                        "Veuillez entrer un nombre entier."
+                );
+            }
+        }
+    }
+
+    private static String lireTexte(
+            Scanner scanner,
+            String message
+    ) {
+
+        while (true) {
+
+            System.out.print(message);
+
+            String texte =
+                    scanner.nextLine().trim();
+
+            if (!texte.isEmpty()) {
+                return texte;
+            }
+
+            System.out.println(
+                    "L'identifiant ne peut pas être vide."
+            );
+        }
+    }
+
+    private static void emprunterDocument(
+            Scanner scanner,
+            BibliothequeService bibliotheque
+    ) {
+
+        String id = lireTexte(
+                scanner,
+                "Identifiant du document à emprunter : "
+        );
+
+        bibliotheque.emprunterDocument(id);
+    }
+
+    private static void retournerDocument(
+            Scanner scanner,
+            BibliothequeService bibliotheque
+    ) {
+
+        String id = lireTexte(
+                scanner,
+                "Identifiant du document à retourner : "
+        );
+
+        bibliotheque.retournerDocument(id);
     }
 }
